@@ -8,9 +8,9 @@ module.exports = function (api) {
         'module-resolver',
         {
           alias: {
-            assets: './assets',
             components: './src/components',
             features: './src/features',
+            services: './src/services',
           },
         },
       ],

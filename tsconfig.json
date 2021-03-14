@@ -10,9 +10,9 @@
     "strict": true,
     "baseUrl": "src",
     "paths": {
-      "assets": ["./assets"],
       "components": ["./src/components"],
-      "features": ["./src/features"]
+      "features": ["./src/features"],
+      "services": ["./services"]
     }
   }
 }

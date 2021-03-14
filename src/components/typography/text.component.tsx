@@ -44,7 +44,9 @@ type TextProps = {
   variant: keyof typeof variants;
 };
 
-export const Text = styled.Text<TextProps>`
+const Text = styled.Text<TextProps>`
   ${({ theme }) => defaultTextStyles(theme)}
   ${({ variant = 'body', theme }) => variants[variant](theme)}
 `;
+
+export default Text;

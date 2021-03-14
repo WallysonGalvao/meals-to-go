@@ -23,6 +23,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "camelcase": "off",
     "react/display-name": "off",
     "import/no-unresolved": 0,
     "react/jsx-filename-extension": [

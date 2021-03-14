@@ -40,12 +40,10 @@ const SpacerView = styled.View<SpaceViewProps>`
   ${({ variant }) => variant};
 `;
 
-export const Spacer = ({
-  position,
-  size,
-  children,
-}: SpacerProps): JSX.Element => {
+const Spacer = ({ position, size, children }: SpacerProps): JSX.Element => {
   const theme = useTheme();
   const variant = getVariant({ position, size, theme });
   return <SpacerView variant={variant}>{children}</SpacerView>;
 };
+
+export default Spacer;
