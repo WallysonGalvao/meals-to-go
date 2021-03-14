@@ -1,9 +1,10 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useContext } from 'react';
 import { MockParsedProps } from './mock';
 import {
   restaurantsRequest,
   restaurantsTransform,
 } from './restaurants.service';
+import { LocationContext } from '../location/location.context';
 
 type RestaurantsContextData = {
   restaurants: MockParsedProps[];
@@ -22,12 +23,16 @@ export const RestaurantsContext = createContext<RestaurantsContextData>(
 const RestaurantsContextProvider = ({ children }: Props): JSX.Element => {
   const [restaurants, setRestaurants] = useState<MockParsedProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
 
-  const retrieveRestaurants = () => {
+  const { location } = useContext(LocationContext);
+
+  const retrieveRestaurants = (loc: string) => {
     setIsLoading(true);
+    setRestaurants([]);
+
     setTimeout(() => {
-      restaurantsRequest()
+      restaurantsRequest(loc)
         .then(restaurantsTransform)
         .then(results => {
           setIsLoading(false);
@@ -39,9 +44,13 @@ const RestaurantsContextProvider = ({ children }: Props): JSX.Element => {
         });
     }, 2000);
   };
+
   useEffect(() => {
-    retrieveRestaurants();
-  }, []);
+    if (location) {
+      const locationString = `${location.lat},${location.lng}`;
+      retrieveRestaurants(locationString);
+    }
+  }, [location]);
 
   return (
     <RestaurantsContext.Provider

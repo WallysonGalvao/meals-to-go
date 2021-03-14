@@ -17,13 +17,13 @@ const RestaurantInfoCard = (restaurant: MockParsedProps): JSX.Element => {
     placeId,
     name,
     photos,
-    rating,
+    rating = 0,
     isClosedTemporarily,
     isOpenNow,
     businessStatus,
     ix,
     icon,
-    vicinity,
+    address,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -62,7 +62,7 @@ const RestaurantInfoCard = (restaurant: MockParsedProps): JSX.Element => {
           </S.SectionEnd>
         </S.Section>
 
-        <S.Address>{vicinity}</S.Address>
+        <S.Address>{address}</S.Address>
       </S.Info>
     </S.RestaurantCard>
   );

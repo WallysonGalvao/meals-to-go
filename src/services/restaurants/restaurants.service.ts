@@ -7,9 +7,7 @@ import {
   MocksLocations,
 } from './mock';
 
-export const restaurantsRequest = (
-  location = '37.7749295,-122.4194155',
-): Promise<MockProps> => {
+export const restaurantsRequest = (location: string): Promise<MockProps> => {
   return new Promise((resolve, reject) => {
     const mock = mocks[location as MocksLocations];
     if (!mock) reject(new Error('not found'));
@@ -28,6 +26,7 @@ export const restaurantsTransform = ({
 
     return {
       ...restaurantSelf,
+      address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       isClosedTemporarily: restaurant.business_status === 'CLOSED_TEMPORARILY',
     };

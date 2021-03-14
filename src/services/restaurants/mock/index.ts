@@ -49,12 +49,6 @@ export type MockProps = {
     opening_hours: {
       open_now: boolean;
     };
-    /* photos: Array<{
-      height: number;
-      html_attributions: string[];
-      photo_reference: string;
-      width: number;
-    }>; */
     photos: string[];
     place_id: string;
     plus_code: {
@@ -108,7 +102,7 @@ export type MockParsedProps = {
   scope: string;
   types: string[];
   userRatingsTotal: number;
-  vicinity: string;
+  address: string;
   isOpenNow: boolean;
   isClosedTemporarily: boolean;
 };

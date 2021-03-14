@@ -23,7 +23,7 @@ type LocationReq = {
   }[];
 };
 
-type LocationProps = {
+export type LocationProps = {
   lat: number;
   lng: number;
 };
