@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 /* eslint-disable camelcase */
 import React from 'react';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
@@ -10,7 +11,7 @@ import {
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 
 import theme from './src/infrastructure/theme';
-import { RestaurantsScreen } from './src/features/restaurants/screens/restaurants.screen';
+import Routes from './src/routes';
 
 export default function App(): JSX.Element | null {
   const [oswaldLoaded] = useOswald({
@@ -28,7 +29,7 @@ export default function App(): JSX.Element | null {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsScreen />
+        <Routes />
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
