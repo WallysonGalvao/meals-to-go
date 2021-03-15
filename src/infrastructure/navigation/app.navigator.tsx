@@ -3,7 +3,7 @@ import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import { RestaurantsScreen } from 'features/restaurants/screens/restaurants.screen';
+import RestaurantsNavigator from './restaurants.navigator';
 
 const TAB_ICON = {
   Restaurants: 'md-restaurant',
@@ -37,7 +37,7 @@ const createScreenOptions = ({ route }: Route) => {
   };
 };
 
-const Routes = (): JSX.Element => {
+const AppNavigator = (): JSX.Element => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -47,10 +47,10 @@ const Routes = (): JSX.Element => {
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+        <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 };
 
-export default Routes;
+export default AppNavigator;

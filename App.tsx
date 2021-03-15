@@ -13,7 +13,7 @@ import RestaurantsContextProvider from './src/services/restaurants/restaurants.c
 import LocationContextProvider from './src/services/location/location.context';
 
 import theme from './src/infrastructure/theme';
-import Routes from './src/routes';
+import Navigation from './src/infrastructure/navigation';
 
 export default function App(): JSX.Element | null {
   const [oswaldLoaded] = useOswald({
@@ -33,7 +33,7 @@ export default function App(): JSX.Element | null {
       <ThemeProvider theme={theme}>
         <LocationContextProvider>
           <RestaurantsContextProvider>
-            <Routes />
+            <Navigation />
           </RestaurantsContextProvider>
         </LocationContextProvider>
       </ThemeProvider>
