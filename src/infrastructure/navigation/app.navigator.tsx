@@ -2,7 +2,9 @@ import React from 'react';
 import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+// import {Ionicons} from 'expo__vector-icons';
 
+import MapScreen from 'features/map/screens/map.screen';
 import RestaurantsNavigator from './restaurants.navigator';
 
 const TAB_ICON = {
@@ -17,18 +19,24 @@ type TabBarIconProps = {
 };
 
 type RootBottomParamList = {
-  // [key in typeof TAB_ICON]: undefined;
   Restaurants: undefined;
+  Map: undefined;
 };
 
-type Route = {
+/* type Route = {
   route: RouteProp<RootBottomParamList, 'Restaurants'>;
+}; */
+
+type Route = {
+  route: {
+    name: keyof typeof TAB_ICON;
+  };
 };
 
 const Tab = createBottomTabNavigator<RootBottomParamList>();
 
 const createScreenOptions = ({ route }: Route) => {
-  const iconName = TAB_ICON[route.name] as 'md-restaurant';
+  const iconName: any = TAB_ICON[route.name];
 
   return {
     tabBarIcon: ({ size, color }: TabBarIconProps): React.ReactNode => (
@@ -48,6 +56,7 @@ const AppNavigator = (): JSX.Element => {
         }}
       >
         <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
+        <Tab.Screen name="Map" component={MapScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -27,15 +27,13 @@ const RestaurantsScreen = ({ navigation }: Props): JSX.Element => {
 
   const keyExtractor = (item: MockParsedProps) => item.placeId;
 
-  const renderItem = ({ item }: { item: MockParsedProps }) => {
+  const renderItem = ({ item: restaurant }: { item: MockParsedProps }) => {
     return (
       <TouchableOpacity
-        onPress={() =>
-          navigation.navigate('RestaurantDetail', { restaurant: item })
-        }
+        onPress={() => navigation.navigate('RestaurantDetail', { restaurant })}
       >
         <Spacer position="bottom" size="large">
-          <RestaurantInfoCard {...item} />
+          <RestaurantInfoCard {...restaurant} />
         </Spacer>
       </TouchableOpacity>
     );
