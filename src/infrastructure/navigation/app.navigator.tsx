@@ -18,7 +18,7 @@ type TabBarIconProps = {
   size: number;
 };
 
-type RootBottomParamList = {
+export type RootBottomParamList = {
   Restaurants: undefined;
   Map: undefined;
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
 import {
   locationRequest,
@@ -18,11 +18,11 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const LocationContext = createContext<LocationContextData>(
+const LocationContext = createContext<LocationContextData>(
   {} as LocationContextData,
 );
 
-const LocationContextProvider = ({ children }: Props): JSX.Element => {
+export const LocationProvider = ({ children }: Props): JSX.Element => {
   const [keyword, setKeyword] = useState('San Francisco');
   const [location, setLocation] = useState<LocationProps>({} as LocationProps);
   const [isLoading, setIsLoading] = useState(false);
@@ -65,4 +65,11 @@ const LocationContextProvider = ({ children }: Props): JSX.Element => {
   );
 };
 
-export default LocationContextProvider;
+export function useLocation(): LocationContextData {
+  const context = useContext(LocationContext);
+
+  if (!context)
+    throw new Error('useLocation must be used within an LocationProvider');
+
+  return context;
+}

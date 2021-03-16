@@ -7,11 +7,11 @@ import {
 import RestaurantsScreen from 'features/restaurants/screens/restaurants.screen';
 import RestaurantDetail from 'features/restaurants/screens/restaurant-detail.screen';
 
-import { MockParsedProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/mock';
 
 export type RootStackParamList = {
   Restaurants: undefined;
-  RestaurantDetail: { restaurant: MockParsedProps };
+  RestaurantDetail: { restaurant: RestaurantProps };
 };
 
 const RestaurantStack = createStackNavigator<RootStackParamList>();

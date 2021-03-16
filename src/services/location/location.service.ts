@@ -26,6 +26,16 @@ type LocationReq = {
 export type LocationProps = {
   lat: number;
   lng: number;
+  viewport: {
+    northeast: {
+      lat: number;
+      lng: number;
+    };
+    southwest: {
+      lat: number;
+      lng: number;
+    };
+  };
 };
 
 export const locationRequest = (searchTerm: string): Promise<LocationReq> => {
@@ -41,5 +51,5 @@ export const locationTransform = (result: LocationReq): LocationProps => {
   const { geometry = {} } = formattedResponse.results[0];
   const { lat, lng } = geometry.location;
 
-  return { lat, lng };
+  return { lat, lng, viewport: geometry.viewport };
 };

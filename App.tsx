@@ -9,8 +9,7 @@ import {
 } from '@expo-google-fonts/oswald';
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 
-import RestaurantsContextProvider from './src/services/restaurants/restaurants.context';
-import LocationContextProvider from './src/services/location/location.context';
+import AppProvider from './src/services';
 
 import theme from './src/infrastructure/theme';
 import Navigation from './src/infrastructure/navigation';
@@ -31,11 +30,9 @@ export default function App(): JSX.Element | null {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+        <AppProvider>
+          <Navigation />
+        </AppProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

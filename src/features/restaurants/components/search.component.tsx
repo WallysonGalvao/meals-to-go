@@ -1,17 +1,33 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Searchbar } from 'react-native-paper';
 
-import { LocationContext } from '../../../services/location/location.context';
+import { useLocation } from '../../../services/location/location.context';
 
 import * as S from './search.styles';
 
-const Search = (): JSX.Element => {
-  const { keyword, search } = useContext(LocationContext);
+type SearchProps = {
+  isFavouritesToggled: boolean;
+  onFavouritesToggle: () => void;
+};
+
+const Search = ({
+  isFavouritesToggled,
+  onFavouritesToggle,
+}: SearchProps): JSX.Element => {
+  const { keyword, search } = useLocation();
   const [searchKeyword, setSearchKeyword] = useState(keyword);
+
+  useEffect(() => {
+    setSearchKeyword(keyword);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <S.SearchContainer>
       <Searchbar
+        icon={isFavouritesToggled ? 'heart' : 'heart-outline'}
+        onIconPress={onFavouritesToggle}
         placeholder="Search for a location"
         value={searchKeyword}
         onSubmitEditing={() => search(searchKeyword)}

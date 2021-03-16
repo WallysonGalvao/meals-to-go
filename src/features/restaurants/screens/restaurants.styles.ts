@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native';
 import { FlatList } from 'react-native';
 import { ActivityIndicator, Colors } from 'react-native-paper';
 
-import { MockParsedProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/mock';
 
 export const SearchContainer = styled.View`
   ${({ theme }) => css`
@@ -11,7 +11,7 @@ export const SearchContainer = styled.View`
 `;
 
 export const RestaurantList = styled(
-  FlatList as new () => FlatList<MockParsedProps>,
+  FlatList as new () => FlatList<RestaurantProps>,
 ).attrs({
   contentContainerStyle: {
     padding: 16,

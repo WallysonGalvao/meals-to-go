@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from 'infrastructure/navigation/restaurants.navigator';
-import { RestaurantsContext } from 'services/restaurants/restaurants.context';
-import { MockParsedProps } from 'services/restaurants/mock';
+import { useRestaurants } from 'services/restaurants/restaurants.context';
+import { RestaurantProps } from 'services/restaurants/mock';
+import { useFavorite } from 'services/favourites/favourites.context';
 
 import Spacer from 'components/spacer/spacer.component';
 import SafeArea from 'components/utility/safe-area.components';
+import FavouritesBar from 'components/favourites/favouriteBar';
 import RestaurantInfoCard from '../components/restaurant-info-card.component';
 import Searchbar from '../components/search.component';
 
@@ -18,16 +20,21 @@ type RestaurantsScreenNavigationProp = StackNavigationProp<
   'Restaurants'
 >;
 
-type Props = {
+type RestaurantsScreenProps = {
   navigation: RestaurantsScreenNavigationProp;
 };
 
-const RestaurantsScreen = ({ navigation }: Props): JSX.Element => {
-  const { restaurants, isLoading } = useContext(RestaurantsContext);
+const RestaurantsScreen = ({
+  navigation,
+}: RestaurantsScreenProps): JSX.Element => {
+  const { restaurants, isLoading } = useRestaurants();
+  const { favourites } = useFavorite();
 
-  const keyExtractor = (item: MockParsedProps) => item.placeId;
+  const [isToggled, setIsToggled] = useState(false);
 
-  const renderItem = ({ item: restaurant }: { item: MockParsedProps }) => {
+  const keyExtractor = (item: RestaurantProps) => item.placeId;
+
+  const renderItem = ({ item: restaurant }: { item: RestaurantProps }) => {
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate('RestaurantDetail', { restaurant })}
@@ -45,7 +52,16 @@ const RestaurantsScreen = ({ navigation }: Props): JSX.Element => {
           <S.Loading size={50} />
         </S.LoadingContainer>
       )}
-      <Searchbar />
+      <Searchbar
+        isFavouritesToggled={isToggled}
+        onFavouritesToggle={() => setIsToggled(!isToggled)}
+      />
+      {isToggled && (
+        <FavouritesBar
+          favourites={favourites}
+          onNavigate={navigation.navigate}
+        />
+      )}
       <S.RestaurantList
         data={restaurants}
         keyExtractor={keyExtractor}

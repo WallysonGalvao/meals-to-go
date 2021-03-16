@@ -1,18 +1,19 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 
 import Spacer from 'components/spacer/spacer.component';
 import Text from 'components/typography/text.component';
+import Favourite from 'components/favourites/favourite.component';
 
-import { MockParsedProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/mock';
 
 import star from '../../../../assets/star';
 import open from '../../../../assets/open';
 
 import * as S from './restaurant-info-card.styles';
 
-const RestaurantInfoCard = (restaurant: MockParsedProps): JSX.Element => {
+const RestaurantInfoCard = (restaurant: RestaurantProps): JSX.Element => {
   const {
     placeId,
     name,
@@ -30,7 +31,10 @@ const RestaurantInfoCard = (restaurant: MockParsedProps): JSX.Element => {
 
   return (
     <S.RestaurantCard elevation={5}>
-      <S.RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <View>
+        <Favourite restaurant={restaurant} />
+        <S.RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      </View>
       <S.Info>
         <Text variant="label">{name}</Text>
         <S.Section>

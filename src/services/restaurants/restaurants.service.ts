@@ -3,7 +3,7 @@ import {
   mocks,
   mockImages,
   MockProps,
-  MockParsedProps,
+  RestaurantProps,
   MocksLocations,
 } from './mock';
 
@@ -17,7 +17,7 @@ export const restaurantsRequest = (location: string): Promise<MockProps> => {
 
 export const restaurantsTransform = ({
   results = [],
-}: MockProps): Array<MockParsedProps> => {
+}: MockProps): Array<RestaurantProps> => {
   const mappedResults = results.map(restaurant => {
     const restaurantSelf = restaurant;
     restaurantSelf.photos = restaurant.photos.map(() => {

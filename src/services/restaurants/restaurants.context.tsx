@@ -1,13 +1,13 @@
 import React, { useState, createContext, useEffect, useContext } from 'react';
-import { MockParsedProps } from './mock';
+import { RestaurantProps } from './mock';
 import {
   restaurantsRequest,
   restaurantsTransform,
 } from './restaurants.service';
-import { LocationContext } from '../location/location.context';
+import { useLocation } from '../location/location.context';
 
 type RestaurantsContextData = {
-  restaurants: MockParsedProps[];
+  restaurants: RestaurantProps[];
   isLoading: boolean;
   error: string;
 };
@@ -16,16 +16,16 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const RestaurantsContext = createContext<RestaurantsContextData>(
+const RestaurantsContext = createContext<RestaurantsContextData>(
   {} as RestaurantsContextData,
 );
 
-const RestaurantsContextProvider = ({ children }: Props): JSX.Element => {
-  const [restaurants, setRestaurants] = useState<MockParsedProps[]>([]);
+export const RestaurantsProvider = ({ children }: Props): JSX.Element => {
+  const [restaurants, setRestaurants] = useState<RestaurantProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const { location } = useContext(LocationContext);
+  const { location } = useLocation();
 
   const retrieveRestaurants = (loc: string) => {
     setIsLoading(true);
@@ -65,4 +65,13 @@ const RestaurantsContextProvider = ({ children }: Props): JSX.Element => {
   );
 };
 
-export default RestaurantsContextProvider;
+export function useRestaurants(): RestaurantsContextData {
+  const context = useContext(RestaurantsContext);
+
+  if (!context)
+    throw new Error(
+      'useRestaurants must be used within an RestaurantsProvider',
+    );
+
+  return context;
+}

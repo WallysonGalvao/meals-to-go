@@ -66,7 +66,7 @@ export type MockProps = {
   status: string;
 };
 
-export type MockParsedProps = {
+export type RestaurantProps = {
   businessStatus: string;
   geometry: {
     location: {
