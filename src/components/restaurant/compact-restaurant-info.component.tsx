@@ -9,16 +9,18 @@ import * as S from './compact-restaurant-info.styles';
 
 type CompactRestaurantInfoProps = {
   restaurant: RestaurantProps;
+  isMap: boolean;
 };
 
 const isAndroid = Platform.OS === 'android';
 
 const CompactRestaurantInfo = ({
   restaurant,
+  isMap,
 }: CompactRestaurantInfoProps): JSX.Element => {
   return (
     <S.Item>
-      {isAndroid ? (
+      {isAndroid && isMap ? (
         <S.CompactWebview source={{ uri: restaurant.photos[0] }} />
       ) : (
         <S.CompactImage source={{ uri: restaurant.photos[0] }} />

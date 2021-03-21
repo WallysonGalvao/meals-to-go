@@ -21,6 +21,7 @@ export const RestaurantList = styled(
 export const Loading = styled(ActivityIndicator).attrs({
   animating: true,
   color: Colors.blue300,
+  size: 50,
 })`
   margin-left: -25px;
 `;

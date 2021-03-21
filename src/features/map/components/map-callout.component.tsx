@@ -9,7 +9,7 @@ type MapCallout = {
 };
 
 const MapCallout = ({ restaurant }: MapCallout): JSX.Element => (
-  <CompactRestaurantInfo restaurant={restaurant} />
+  <CompactRestaurantInfo isMap restaurant={restaurant} />
 );
 
 export default MapCallout;

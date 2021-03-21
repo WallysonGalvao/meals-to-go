@@ -14,6 +14,8 @@ import AppProvider from './src/services';
 import theme from './src/infrastructure/theme';
 import Navigation from './src/infrastructure/navigation';
 
+import './src/config/firebase';
+
 export default function App(): JSX.Element | null {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,

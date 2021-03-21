@@ -45,11 +45,12 @@ const RestaurantsScreen = ({
       </TouchableOpacity>
     );
   };
+
   return (
     <SafeArea>
       {isLoading && (
         <S.LoadingContainer>
-          <S.Loading size={50} />
+          <S.Loading />
         </S.LoadingContainer>
       )}
       <Searchbar
