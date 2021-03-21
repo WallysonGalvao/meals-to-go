@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import styled from 'styled-components/native';
 
 export const AccountBackground = styled.ImageBackground.attrs({
