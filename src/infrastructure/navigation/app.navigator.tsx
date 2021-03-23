@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 // import {Ionicons} from 'expo__vector-icons';
 
+import { useAuth } from 'services/authentication/authentication.context';
+
 import MapScreen from 'features/map/screens/map.screen';
 import RestaurantsNavigator from './restaurants.navigator';
 
@@ -31,6 +33,16 @@ type Route = {
   route: {
     name: keyof typeof TAB_ICON;
   };
+};
+
+const Settings = () => {
+  const { onLogout } = useAuth();
+  return (
+    <SafeArea>
+      <Text>Settings</Text>
+      <Button title="logout" onPress={() => onLogout()} />
+    </SafeArea>
+  );
 };
 
 const Tab = createBottomTabNavigator<RootBottomParamList>();

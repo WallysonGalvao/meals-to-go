@@ -1,9 +1,45 @@
 import React from 'react';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+import { RootStackParamList } from 'infrastructure/navigation/account.navigator';
+import Spacer from 'components/spacer/spacer.component';
 
 import * as S from '../components/account.styles';
 
-const AccountScreen = (): JSX.Element => {
-  return <S.AccountBackground />;
+type AccountScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Main'
+>;
+
+type AccountScreenProps = {
+  navigation: AccountScreenNavigationProp;
+};
+
+const AccountScreen = ({ navigation }: AccountScreenProps): JSX.Element => {
+  return (
+    <S.AccountBackground>
+      <S.AccountCover />
+      <S.Title>Meals To Go</S.Title>
+      <S.AccountContainer>
+        <S.AuthButton
+          icon="lock-open-outline"
+          mode="contained"
+          onPress={() => navigation.navigate('Login')}
+        >
+          Login
+        </S.AuthButton>
+        <Spacer size="large">
+          <S.AuthButton
+            icon="email"
+            mode="contained"
+            onPress={() => navigation.navigate('Register')}
+          >
+            Register
+          </S.AuthButton>
+        </Spacer>
+      </S.AccountContainer>
+    </S.AccountBackground>
+  );
 };
 
 export default AccountScreen;

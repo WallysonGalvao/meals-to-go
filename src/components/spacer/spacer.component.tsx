@@ -15,7 +15,7 @@ const positionVariant = {
 } as const;
 
 type VariantProps = {
-  position: keyof typeof positionVariant;
+  position?: keyof typeof positionVariant;
   size: keyof typeof sizeVariant;
   theme: DefaultTheme;
 };
@@ -28,7 +28,7 @@ type SpacerProps = {
   children: React.ReactNode;
 } & Omit<VariantProps, 'theme'>;
 
-const getVariant = ({ position, size, theme }: VariantProps) => {
+const getVariant = ({ position = 'top', size, theme }: VariantProps) => {
   const sizeIndex = sizeVariant[size];
   const property = positionVariant[position];
   const value = theme.space[sizeIndex];
@@ -40,7 +40,11 @@ const SpacerView = styled.View<SpaceViewProps>`
   ${({ variant }) => variant};
 `;
 
-const Spacer = ({ position, size, children }: SpacerProps): JSX.Element => {
+const Spacer = ({
+  position = 'top',
+  size,
+  children,
+}: SpacerProps): JSX.Element => {
   const theme = useTheme();
   const variant = getVariant({ position, size, theme });
   return <SpacerView variant={variant}>{children}</SpacerView>;
