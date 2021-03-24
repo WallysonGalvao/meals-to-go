@@ -10,6 +10,7 @@ import { useFavorite } from 'services/favourites/favourites.context';
 import Spacer from 'components/spacer/spacer.component';
 import SafeArea from 'components/utility/safe-area.components';
 import FavouritesBar from 'components/favourites/favouriteBar';
+import FadeInView from 'components/animations/fade.animation';
 import RestaurantInfoCard from '../components/restaurant-info-card.component';
 import Searchbar from '../components/search.component';
 
@@ -40,7 +41,9 @@ const RestaurantsScreen = ({
         onPress={() => navigation.navigate('RestaurantDetail', { restaurant })}
       >
         <Spacer position="bottom" size="large">
-          <RestaurantInfoCard {...restaurant} />
+          <FadeInView>
+            <RestaurantInfoCard {...restaurant} />
+          </FadeInView>
         </Spacer>
       </TouchableOpacity>
     );

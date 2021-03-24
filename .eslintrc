@@ -23,6 +23,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "react/require-default-props": "off",
     "camelcase": "off",
     "react/display-name": "off",
     "import/no-unresolved": 0,

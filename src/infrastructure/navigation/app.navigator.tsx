@@ -2,11 +2,9 @@ import React from 'react';
 import { RouteProp } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-// import {Ionicons} from 'expo__vector-icons';
-
-import { useAuth } from 'services/authentication/authentication.context';
 
 import MapScreen from 'features/map/screens/map.screen';
+import SettingsNavigator from './settings.navigator';
 import RestaurantsNavigator from './restaurants.navigator';
 
 const TAB_ICON = {
@@ -23,6 +21,7 @@ type TabBarIconProps = {
 export type RootBottomParamList = {
   Restaurants: undefined;
   Map: undefined;
+  Settings: undefined;
 };
 
 /* type Route = {
@@ -33,16 +32,6 @@ type Route = {
   route: {
     name: keyof typeof TAB_ICON;
   };
-};
-
-const Settings = () => {
-  const { onLogout } = useAuth();
-  return (
-    <SafeArea>
-      <Text>Settings</Text>
-      <Button title="logout" onPress={() => onLogout()} />
-    </SafeArea>
-  );
 };
 
 const Tab = createBottomTabNavigator<RootBottomParamList>();
@@ -68,6 +57,7 @@ const AppNavigator = (): JSX.Element => {
     >
       <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
       <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="Settings" component={SettingsNavigator} />
     </Tab.Navigator>
   );
 };
