@@ -42,7 +42,7 @@ This project was developed during the [Complete React Native: Zero To Mastery](h
 ## 🎨 Layout
 
 <p align="center">
-    <img alt="Mockup Meals To Go App" title="#ztmacademy" src=".github/mockup.png" width="720px" />
+    <img alt="Mockup Meals To Go App" title="#ztmacademy" src=".github/mockup.png" />
 </p>
 
 
