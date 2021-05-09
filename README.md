@@ -3,7 +3,7 @@
 </h1>
 
 <h1 align="center">
-    <img alt="Complete React Native in 2021: Zero to Mastery [with Hooks]" title="#ztmacademy" src=".github/react_native_zero_to_mastery.png" width="250px" />
+    <img alt="Complete React Native in 2021: Zero to Mastery [with Hooks]" title="#ztmacademy" src=".github/ztm-rn.png" width="250px" />
 </h1>
 
 <h4 align="center">
@@ -42,7 +42,7 @@ This project was developed during the [Complete React Native: Zero To Mastery](h
 ## 🎨 Layout
 
 <p align="center">
-    <img alt="Mockup Meals To Go App" title="#ztmacademy" src=".github/mockup.png" />
+    <img alt="Mockup Meals To Go App" title="#ztmacademy" src=".github/mockup.png" width="720px" />
 </p>
 
 
