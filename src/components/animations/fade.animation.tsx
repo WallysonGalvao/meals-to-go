@@ -18,13 +18,7 @@ const FadeInView = ({ duration = 1500, children }: Props): JSX.Element => {
   }, [fadeAnim, duration]);
 
   return (
-    <Animated.View // Special animatable View
-      style={{
-        opacity: fadeAnim, // Bind opacity to animated value
-      }}
-    >
-      {children}
-    </Animated.View>
+    <Animated.View style={{ opacity: fadeAnim }}>{children}</Animated.View>
   );
 };
 

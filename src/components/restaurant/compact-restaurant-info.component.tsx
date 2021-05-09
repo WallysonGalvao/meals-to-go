@@ -9,7 +9,7 @@ import * as S from './compact-restaurant-info.styles';
 
 type CompactRestaurantInfoProps = {
   restaurant: RestaurantProps;
-  isMap: boolean;
+  isMap?: boolean;
 };
 
 const isAndroid = Platform.OS === 'android';

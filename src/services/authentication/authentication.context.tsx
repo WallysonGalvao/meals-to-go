@@ -1,11 +1,13 @@
 import React, { useState, createContext, useContext, useCallback } from 'react';
-import * as firebase from 'firebase';
+import firebase, { User, auth } from 'firebase';
 
 import { loginRequest } from './authentication.service';
 
+export type UserProps = User; // | auth.UserCredential;
+
 type AuthenticationContextData = {
   isAuthenticated: boolean;
-  user: firebase.auth.UserCredential;
+  user: UserProps;
   isLoading: boolean;
   error: string;
   onLogin: (email: string, password: string) => void;
@@ -30,9 +32,10 @@ export const AuthenticationProvider = ({
 }: AuthenticationProviderProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [user, setUser] = useState<firebase.auth.UserCredential>(
+  /* const [user, setUser] = useState<firebase.auth.UserCredential>(
     {} as firebase.auth.UserCredential,
-  );
+  ); */
+  const [user, setUser] = useState<UserProps>({} as UserProps);
 
   firebase.auth().onAuthStateChanged(usr => {
     if (usr) {
@@ -85,7 +88,7 @@ export const AuthenticationProvider = ({
       .auth()
       .signOut()
       .then(() => {
-        setUser({} as firebase.auth.UserCredential);
+        setUser({} as UserProps);
         setError('');
       });
   };

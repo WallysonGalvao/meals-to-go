@@ -41,7 +41,7 @@ const variants = {
 };
 
 type TextProps = {
-  variant: keyof typeof variants;
+  variant?: keyof typeof variants;
 };
 
 const Text = styled.Text<TextProps>`
