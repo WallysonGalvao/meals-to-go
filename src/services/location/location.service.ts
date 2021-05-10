@@ -1,6 +1,6 @@
 import camelize from 'camelize';
 
-import { locations } from './location.mock';
+// import { locations } from './location.mock';
 
 type LocationReq = {
   results: {
@@ -38,12 +38,20 @@ export type LocationProps = {
   };
 };
 
-export const locationRequest = (searchTerm: string): Promise<LocationReq> => {
+/* export const locationRequest = (searchTerm: string): Promise<LocationReq> => {
   return new Promise((resolve, reject) => {
     const locationMock = locations[searchTerm as keyof typeof locations];
     if (!locationMock) reject(new Error('not found'));
     resolve(locationMock);
   });
+}; */
+
+export const locationRequest = async (
+  searchTerm: string,
+): Promise<LocationReq> => {
+  const url = `http://localhost:5001/mealstogo-cd7bc/us-central1/geocode?city==${searchTerm}`;
+  const res = await fetch(url);
+  return res.json();
 };
 
 export const locationTransform = (result: LocationReq): LocationProps => {

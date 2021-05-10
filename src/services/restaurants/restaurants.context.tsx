@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect, useContext } from 'react';
-import { RestaurantProps } from './mock';
+import { RestaurantProps } from './types';
 import {
   restaurantsRequest,
   restaurantsTransform,
@@ -31,18 +31,16 @@ export const RestaurantsProvider = ({ children }: Props): JSX.Element => {
     setIsLoading(true);
     setRestaurants([]);
 
-    setTimeout(() => {
-      restaurantsRequest(loc)
-        .then(restaurantsTransform)
-        .then(results => {
-          setIsLoading(false);
-          setRestaurants(results);
-        })
-        .catch(err => {
-          setIsLoading(false);
-          setError(err);
-        });
-    }, 2000);
+    restaurantsRequest(loc)
+      .then(restaurantsTransform)
+      .then(results => {
+        setIsLoading(false);
+        setRestaurants(results);
+      })
+      .catch(err => {
+        setIsLoading(false);
+        setError(err);
+      });
   };
 
   useEffect(() => {
