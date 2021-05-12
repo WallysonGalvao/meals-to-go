@@ -34,10 +34,12 @@ export const RestaurantsProvider = ({ children }: Props): JSX.Element => {
     restaurantsRequest(loc)
       .then(restaurantsTransform)
       .then(results => {
+        setError('');
         setIsLoading(false);
         setRestaurants(results);
       })
       .catch(err => {
+        setRestaurants([]);
         setIsLoading(false);
         setError(err);
       });

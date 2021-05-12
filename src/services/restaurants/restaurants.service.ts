@@ -1,10 +1,11 @@
 import camelize from 'camelize';
+import { host, isMock } from '../../utils/env';
 import { MockProps, RestaurantProps } from './types';
 
 export const restaurantsRequest = async (
   location: string,
 ): Promise<MockProps> => {
-  const url = `http://localhost:5001/mealstogo-b2612/us-central1/placesNearby?location=${location}`;
+  const url = `${host}/placesNearby?location=${location}&mock=${isMock}`;
   const res = await fetch(url);
   return res.json();
 };
