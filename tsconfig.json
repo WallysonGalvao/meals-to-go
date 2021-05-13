@@ -13,7 +13,8 @@
       "components": ["./src/components"],
       "features": ["./src/features"],
       "infrastructure": ["./src/infrastructure"],
-      "services": ["./services"]
+      "services": ["./src/services"],
+      "utils": ["./src/utils"]
     }
   }
 }

@@ -41,6 +41,7 @@ export const LocationProvider = ({ children }: Props): JSX.Element => {
     locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then(result => {
+        setError('');
         setIsLoading(false);
         setLocation(result);
       })

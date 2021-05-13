@@ -12,6 +12,7 @@ module.exports = function (api) {
             features: './src/features',
             infrastructure: './src/infrastructure',
             services: './src/services',
+            utils: './src/utils',
           },
         },
       ],

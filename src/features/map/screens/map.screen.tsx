@@ -24,7 +24,7 @@ type Props = {
   navigation: MapScreenNavigationProp;
 };
 
-const MapScreen = ({ navigation }: Props): JSX.Element => {
+const RestaurantMap = ({ navigation }: Props): JSX.Element => {
   const { location } = useLocation();
   const { restaurants = [] } = useRestaurants();
 
@@ -76,4 +76,22 @@ const MapScreen = ({ navigation }: Props): JSX.Element => {
     </>
   );
 };
+
+const MapScreen = ({ navigation }: Props): JSX.Element => {
+  const { location } = useLocation();
+  if (!location) {
+    return (
+      <S.Map
+        region={{
+          latitude: 0,
+          longitude: 0,
+          latitudeDelta: 0,
+          longitudeDelta: 0.02,
+        }}
+      />
+    );
+  }
+  return <RestaurantMap navigation={navigation} />;
+};
+
 export default MapScreen;
