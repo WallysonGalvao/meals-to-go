@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 import MapScreen from 'features/map/screens/map.screen';
+import CheckoutScreen from 'features/checkout/screens/checkout.screen';
 import SettingsNavigator from './settings.navigator';
 import RestaurantsNavigator from './restaurants.navigator';
 
@@ -11,6 +12,7 @@ const TAB_ICON = {
   Restaurants: 'md-restaurant',
   Map: 'md-map',
   Settings: 'md-settings',
+  Checkout: 'md-cart',
 };
 
 type TabBarIconProps = {
@@ -22,6 +24,7 @@ export type RootBottomParamList = {
   Restaurants: undefined;
   Map: undefined;
   Settings: undefined;
+  Checkout: undefined;
 };
 
 /* type Route = {
@@ -56,6 +59,7 @@ const AppNavigator = (): JSX.Element => {
       }}
     >
       <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
+      <Tab.Screen name="Checkout" component={CheckoutScreen} />
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsNavigator} />
     </Tab.Navigator>
