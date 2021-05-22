@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
 import { useFavorite } from 'services/favourites/favourites.context';
-import { RestaurantProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/types';
 
 import * as S from './favourite.styles';
 

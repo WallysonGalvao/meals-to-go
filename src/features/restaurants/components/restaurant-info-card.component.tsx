@@ -6,14 +6,20 @@ import Spacer from 'components/spacer/spacer.component';
 import Text from 'components/typography/text.component';
 import Favourite from 'components/favourites/favourite.component';
 
-import { RestaurantProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/types';
 
 import star from '../../../../assets/star';
 import open from '../../../../assets/open';
 
 import * as S from './restaurant-info-card.styles';
 
-const RestaurantInfoCard = (restaurant: RestaurantProps): JSX.Element => {
+type RestaurantInfoCardProps = {
+  restaurant: RestaurantProps;
+};
+
+const RestaurantInfoCard = ({
+  restaurant,
+}: RestaurantInfoCardProps): JSX.Element => {
   const {
     placeId,
     name,

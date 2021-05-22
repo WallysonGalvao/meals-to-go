@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { RestaurantProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/types';
 import { useAuth } from 'services/authentication/authentication.context';
 
 type Favorites = RestaurantProps;

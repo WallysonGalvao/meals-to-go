@@ -49,7 +49,7 @@ const RestaurantsScreen = ({
       >
         <Spacer position="bottom" size="large">
           <FadeInView>
-            <RestaurantInfoCard {...restaurant} />
+            <RestaurantInfoCard restaurant={restaurant} />
           </FadeInView>
         </Spacer>
       </TouchableOpacity>

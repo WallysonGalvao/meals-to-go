@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 import SafeArea from 'components/utility/safe-area.components';
 
-import { RestaurantProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/types';
 
 export const NoFavouritesArea = styled(SafeArea)`
   align-items: center;

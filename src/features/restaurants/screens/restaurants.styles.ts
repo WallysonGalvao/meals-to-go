@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components/native';
 import { FlatList } from 'react-native';
-import { ActivityIndicator, Colors } from 'react-native-paper';
+import { ActivityIndicator, Colors, Button } from 'react-native-paper';
 
-import { RestaurantProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/types';
 
 export const SearchContainer = styled.View`
   ${({ theme }) => css`
@@ -30,4 +30,14 @@ export const LoadingContainer = styled.View`
   position: absolute;
   top: 50%;
   left: 50%;
+`;
+
+export const OrderButton = styled(Button).attrs(({ theme }) => ({
+  color: theme.colors.brand.primary,
+}))`
+  ${({ theme }) => css`
+    padding: ${theme.space[2]};
+    width: 80%;
+    align-self: center;
+  `}
 `;

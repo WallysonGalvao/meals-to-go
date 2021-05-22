@@ -4,9 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 import MapScreen from 'features/map/screens/map.screen';
-import CheckoutScreen from 'features/checkout/screens/checkout.screen';
+
 import SettingsNavigator from './settings.navigator';
 import RestaurantsNavigator from './restaurants.navigator';
+import { CheckoutNavigator } from './checkout.navigator';
 
 const TAB_ICON = {
   Restaurants: 'md-restaurant',
@@ -59,7 +60,7 @@ const AppNavigator = (): JSX.Element => {
       }}
     >
       <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-      <Tab.Screen name="Checkout" component={CheckoutScreen} />
+      <Tab.Screen name="Checkout" component={CheckoutNavigator} />
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsNavigator} />
     </Tab.Navigator>
