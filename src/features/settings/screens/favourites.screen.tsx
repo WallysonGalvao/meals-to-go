@@ -4,7 +4,7 @@ import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { useFavorite } from 'services/favourites/favourites.context';
-import { RestaurantProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/types';
 import { RootStackParamList as RestaurantsStackParamList } from 'infrastructure/navigation/restaurants.navigator';
 import { RootStackParamList as SettingsStackParamList } from 'infrastructure/navigation/settings.navigator';
 
@@ -44,7 +44,7 @@ const FavouritesScreen = ({
         }
       >
         <Spacer position="bottom" size="large">
-          <RestaurantInfoCard {...restaurant} />
+          <RestaurantInfoCard restaurant={restaurant} />
         </Spacer>
       </TouchableOpacity>
     );

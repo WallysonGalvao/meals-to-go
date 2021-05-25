@@ -5,6 +5,8 @@ const sizeVariant = {
   small: 1,
   medium: 2,
   large: 3,
+  xl: 4,
+  xxl: 5,
 } as const;
 
 const positionVariant = {
@@ -25,7 +27,7 @@ type SpaceViewProps = {
 };
 
 type SpacerProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 } & Omit<VariantProps, 'theme'>;
 
 const getVariant = ({ position = 'top', size, theme }: VariantProps) => {

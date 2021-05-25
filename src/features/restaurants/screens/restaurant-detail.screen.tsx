@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { List } from 'react-native-paper';
-import { RouteProp } from '@react-navigation/native';
-
+import { RouteProp, CompositeNavigationProp } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootBottomParamList } from 'infrastructure/navigation/app.navigator';
 import { RootStackParamList } from 'infrastructure/navigation/restaurants.navigator';
 
+import { useCart } from 'services/cart/cart.context';
+
 import SafeArea from 'components/utility/safe-area.components';
+import Spacer from 'components/spacer/spacer.component';
 import RestaurantInfoCard from '../components/restaurant-info-card.component';
+
+import * as S from './restaurants.styles';
+
+/* type RestaurantsScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'RestaurantDetail'
+>; */
+
+type RestaurantsScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootBottomParamList, 'Checkout'>,
+  StackNavigationProp<RootStackParamList>
+>;
 
 type RestaurantDetailScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -14,11 +31,14 @@ type RestaurantDetailScreenRouteProp = RouteProp<
 >;
 
 type Props = {
+  navigation: RestaurantsScreenNavigationProp;
   route: RestaurantDetailScreenRouteProp;
 };
 
-const RestaurantDetailScreen = ({ route }: Props): JSX.Element => {
+const RestaurantDetailScreen = ({ navigation, route }: Props): JSX.Element => {
   const { restaurant } = route.params;
+
+  const { addToCart } = useCart();
 
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
@@ -27,7 +47,7 @@ const RestaurantDetailScreen = ({ route }: Props): JSX.Element => {
 
   return (
     <SafeArea>
-      <RestaurantInfoCard {...restaurant} />
+      <RestaurantInfoCard restaurant={restaurant} />
       <ScrollView>
         <List.Accordion
           title="Breakfast"
@@ -74,6 +94,18 @@ const RestaurantDetailScreen = ({ route }: Props): JSX.Element => {
           <List.Item title="Fanta" />
         </List.Accordion>
       </ScrollView>
+      <Spacer position="bottom" size="large">
+        <S.OrderButton
+          icon="cash-usd"
+          mode="contained"
+          onPress={() => {
+            addToCart({ item: 'special', price: 1299 }, restaurant);
+            navigation.navigate('Checkout');
+          }}
+        >
+          Order Special Only 12.99!
+        </S.OrderButton>
+      </Spacer>
     </SafeArea>
   );
 };

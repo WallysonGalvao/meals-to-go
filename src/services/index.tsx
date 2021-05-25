@@ -4,12 +4,15 @@ import { AuthenticationProvider } from './authentication/authentication.context'
 import { FavouritesProvider } from './favourites/favourites.context';
 import { LocationProvider } from './location/location.context';
 import { RestaurantsProvider } from './restaurants/restaurants.context';
+import { CartContextProvider } from './cart/cart.context';
 
 const AppProvider: React.FC = ({ children }) => (
   <AuthenticationProvider>
     <FavouritesProvider>
       <LocationProvider>
-        <RestaurantsProvider>{children}</RestaurantsProvider>
+        <RestaurantsProvider>
+          <CartContextProvider>{children}</CartContextProvider>
+        </RestaurantsProvider>
       </LocationProvider>
     </FavouritesProvider>
   </AuthenticationProvider>

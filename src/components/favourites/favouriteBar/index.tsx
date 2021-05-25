@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
-import { RestaurantProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/types';
 import { RootStackParamList } from 'infrastructure/navigation/restaurants.navigator';
 import Spacer from 'components/spacer/spacer.component';
 import Text from 'components/typography/text.component';

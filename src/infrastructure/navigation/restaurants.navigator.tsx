@@ -7,7 +7,7 @@ import {
 import RestaurantsScreen from 'features/restaurants/screens/restaurants.screen';
 import RestaurantDetail from 'features/restaurants/screens/restaurant-detail.screen';
 
-import { RestaurantProps } from 'services/restaurants/mock';
+import { RestaurantProps } from 'services/restaurants/types';
 
 export type RootStackParamList = {
   Restaurants: undefined;
