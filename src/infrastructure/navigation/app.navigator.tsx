@@ -5,6 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import MapScreen from 'features/map/screens/map.screen';
 
+import theme from 'infrastructure/theme';
+
 import SettingsNavigator from './settings.navigator';
 import RestaurantsNavigator from './restaurants.navigator';
 import { CheckoutNavigator } from './checkout.navigator';
@@ -55,8 +57,8 @@ const AppNavigator = (): JSX.Element => {
     <Tab.Navigator
       screenOptions={createScreenOptions}
       tabBarOptions={{
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
+        activeTintColor: theme.colors.brand.primary,
+        inactiveTintColor: theme.colors.brand.muted,
       }}
     >
       <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />

@@ -4,6 +4,8 @@ import { Card } from 'react-native-paper';
 export const RestaurantCard = styled(Card)`
   ${({ theme }) => css`
     background-color: ${theme.colors.bg.primary};
+    width: 95%;
+    align-self: center;
   `}
 `;
 

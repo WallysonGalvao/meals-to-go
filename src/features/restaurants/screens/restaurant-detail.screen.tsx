@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
-import { List } from 'react-native-paper';
+import { List, Divider } from 'react-native-paper';
 import { RouteProp, CompositeNavigationProp } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -14,11 +14,6 @@ import Spacer from 'components/spacer/spacer.component';
 import RestaurantInfoCard from '../components/restaurant-info-card.component';
 
 import * as S from './restaurants.styles';
-
-/* type RestaurantsScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'RestaurantDetail'
->; */
 
 type RestaurantsScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootBottomParamList, 'Checkout'>,
@@ -56,8 +51,10 @@ const RestaurantDetailScreen = ({ navigation, route }: Props): JSX.Element => {
           onPress={() => setBreakfastExpanded(!breakfastExpanded)}
         >
           <List.Item title="Eggs Benedict" />
+          <Divider />
           <List.Item title="Classic Breakfast" />
         </List.Accordion>
+        <Divider />
 
         <List.Accordion
           title="Lunch"
@@ -66,9 +63,12 @@ const RestaurantDetailScreen = ({ navigation, route }: Props): JSX.Element => {
           onPress={() => setLunchExpanded(!lunchExpanded)}
         >
           <List.Item title="Burger w/ Fries" />
+          <Divider />
           <List.Item title="Steak Sandwich" />
+          <Divider />
           <List.Item title="Mushroom Soup" />
         </List.Accordion>
+        <Divider />
 
         <List.Accordion
           title="Dinner"
@@ -77,9 +77,12 @@ const RestaurantDetailScreen = ({ navigation, route }: Props): JSX.Element => {
           onPress={() => setDinnerExpanded(!dinnerExpanded)}
         >
           <List.Item title="Spaghetti Bolognese" />
+          <Divider />
           <List.Item title="Veal Cutlet with Chicken Mushroom Rotini" />
+          <Divider />
           <List.Item title="Steak Frites" />
         </List.Accordion>
+        <Divider />
 
         <List.Accordion
           title="Drinks"
@@ -88,9 +91,13 @@ const RestaurantDetailScreen = ({ navigation, route }: Props): JSX.Element => {
           onPress={() => setDrinksExpanded(!drinksExpanded)}
         >
           <List.Item title="Coffee" />
+          <Divider />
           <List.Item title="Tea" />
+          <Divider />
           <List.Item title="Modelo" />
+          <Divider />
           <List.Item title="Coke" />
+          <Divider />
           <List.Item title="Fanta" />
         </List.Accordion>
       </ScrollView>

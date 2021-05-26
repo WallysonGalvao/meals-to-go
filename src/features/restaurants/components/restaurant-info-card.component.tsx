@@ -36,7 +36,7 @@ const RestaurantInfoCard = ({
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <S.RestaurantCard elevation={5}>
+    <S.RestaurantCard elevation={2}>
       <View>
         <Favourite restaurant={restaurant} />
         <S.RestaurantCardCover key={name} source={{ uri: photos[0] }} />

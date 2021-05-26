@@ -1,7 +1,9 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
+
 import { RestaurantProps } from 'services/restaurants/types';
 import { RootStackParamList } from 'infrastructure/navigation/restaurants.navigator';
+
 import Spacer from 'components/spacer/spacer.component';
 import Text from 'components/typography/text.component';
 
@@ -25,7 +27,7 @@ const FavouritesBar = ({
     return null;
   }
   return (
-    <S.FavouritesWrapper>
+    <S.FavouritesWrapper elevation={3}>
       <Spacer position="left" size="large">
         <Text variant="caption">Favourites</Text>
       </Spacer>
